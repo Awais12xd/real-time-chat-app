@@ -9,7 +9,9 @@ const EnvSchema = z.object({
     DB_NAME : z.string().default("realtime_chat_and_thread"),
     DB_USER : z.string().default("postgres"),
     DB_PASSWORD : z.string().default("postgres123"),
-    DATABASE_URL : z.string().default("postgresql://postgres.cdxbtuhrzsxizesbpyyy:Postgres123vs@aws-1-ap-south-1.pooler.supabase.com:5432/postgres")
+    DATABASE_URL : z.string(),
+    CLERK_PUBLISHABLE_KEY : z.string(),
+    CLERK_SECRET_KEY : z.string()
 })
 
 const parsed = EnvSchema.safeParse(process.env);

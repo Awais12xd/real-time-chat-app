@@ -1,8 +1,9 @@
-import  express  from "express";
+import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import  {notFoundHandler}  from "./middlewares/notFoundHandler.js";
+import { notFoundHandler } from "./middlewares/notFoundHandler.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
+import { clerkMiddleware } from "./config/clerk.js"
 
 
 export function createApp() {
@@ -10,9 +11,11 @@ export function createApp() {
 
     const app = express();
 
+    app.use(clerkMiddleware());
+
     app.use(helmet());
     app.use(cors({
-        origin : ["http://localhost:3000"],
+        origin: ["http://localhost:3000"],
         credentials: true
     }))
     app.use(express.json());
@@ -21,4 +24,3 @@ export function createApp() {
 
     return app;
 }
-     

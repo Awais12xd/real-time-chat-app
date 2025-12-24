@@ -25,14 +25,20 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <h1>Hello welcome back</h1>
-        {children}
-      </body>
-    </html>
+      <html lang="en" className="dark">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <div className="flex min-h-screen flex-col bg-background text-foreground">
+            {/* Navbar */}
+            <main className="flex flex-1 flex-col">
+              <div className="mx-auto flex w-full  flex-1 flex-col px-4 py-8 md:py-10">
+                {children}
+              </div>
+            </main>
+          </div>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
