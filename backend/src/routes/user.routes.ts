@@ -21,16 +21,16 @@ function toResponse(profile: UserProfile): UserProfileResponse {
 
 
 //get profile api 
-userRouter.get("/" , async(req , res , next) => {
+userRouter.get("/", async (req, res, next) => {
     try {
-        const auth= getAuth(req);
-        if(!auth.userId){
+        const auth = getAuth(req);
+        if (!auth.userId) {
             throw new UnauthorizedError("Unauthorized");
         }
         const profile = await getUserFromClerk(auth.userId);
         const response = toResponse(profile);
 
-        res.json({data : response});
+        res.json({ data: response });
     } catch (error) {
         next(error);
     }
@@ -38,3 +38,14 @@ userRouter.get("/" , async(req , res , next) => {
 
 
 //update profile api
+
+userRouter.patch("/", async (req, res, next) => {
+    try {
+        const auth = getAuth(req);
+        if (!auth.userId) {
+            throw new UnauthorizedError("Unauthorized");
+        }
+    } catch (error) {
+
+    }
+})
