@@ -44,13 +44,13 @@ export type UserProfileResponse = {
 
 }
 export function toUserProfileResponse(profile : UserProfile): UserProfileResponse {
-   const {user , clerkEmail , clerkFullName} = profile;
+   const {user , clerkEmail} = profile;
 
    return{
     id:user.id,
     clerkUserId:user.clerkUserId,
     email : clerkEmail ?? null,
-    displayName : user.displayName ?? clerkFullName ?? null,
+    displayName : user.displayName ?? null,
     handle : user.handle ?? null,
     avatarUrl : user.avatarUrl ?? null,
     bio : user.bio ?? null,
